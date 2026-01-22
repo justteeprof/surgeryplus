@@ -1,184 +1,67 @@
-/* Reset and base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
-body {
-    background-color: #f9f9f9;
+/* Phone-like container */
+.phone-frame {
+    background: #a99bf5;
+    width: 375px; /* typical Android screen width */
+    max-width: 90vw;
+    height: 667px; /* typical Android screen height */
+    max-height: 90vh;
+    margin: 20px auto;
+    border: 16px solid #333;
+    border-radius: 36px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 1rem;
+    justify-content: flex-start;
 }
 
-/* Header */
-.header {
-    text-align: center;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+/* Top notch simulation */
+.phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 30px;
+    background: #333;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
-.headline {
-    font-size: 2rem; /* approx 32px on mobile */
-    font-weight: bold;
-    color: #1a1a1a;
-    margin-bottom: 0.5rem;
+/* Scrollable content inside phone */
+.phone-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
 }
 
-.subheadline {
-    font-size: 1.2rem; /* approx 20px */
-    color: #555;
+/* Make buttons and fonts scale nicely */
+.start-btn, .secondary-btn, .mode-btn, select {
+    transition: all 0.3s ease;
 }
 
-/* Start Button */
-.start-btn {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    margin-bottom: 5vh;
-    width: 80%;
-    max-width: 300px;
-    transition: background 0.3s;
-}
-
-.start-btn:hover {
-    background-color: #45a049;
-}
-
-/* Settings */
-.settings {
-    background-color: #fff;
-    width: 90%;
-    max-width: 360px;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-bottom: 5vh;
-}
-
-.settings h2 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-/* Dropdown */
-.dropdown {
-    margin-bottom: 1.5rem;
-}
-
-.dropdown label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    color: #444;
-}
-
-.dropdown select {
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-}
-
-/* Modes */
-.modes {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.mode {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.mode span {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    color: #444;
-}
-
-.mode-btn {
-    padding: 0.6rem 1.5rem;
-    border-radius: 10px;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.mode-btn.on {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.mode-btn.off {
-    background-color: #f44336;
-    color: white;
-}
-
-/* Bottom Buttons */
-.bottom-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3vh;
-    flex-wrap: wrap;
-}
-
-.secondary-btn {
-    background-color: #2196F3;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 12px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-    flex: 1 1 40%;
-    max-width: 150px;
-}
-
-.secondary-btn:hover {
-    background-color: #1976D2;
-}
-
-/* Footer */
-footer {
-    font-size: 0.85rem;
-    color: #999;
-    text-align: center;
-    margin-top: auto;
-    padding: 1rem 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 400px) {
-    .headline {
-        font-size: 1.6rem;
+@media (max-width: 500px) {
+    .headline, .subheadline {
+        font-size: 16px;
     }
-
-    .subheadline {
-        font-size: 1rem;
+    .start-btn, .secondary-btn {
+        font-size: 18px;
+        padding: 12px;
     }
-
-    .start-btn {
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
-    }
-
     .settings h2 {
-        font-size: 1.1rem;
+        font-size: 24px;
+    }
+    .mode {
+        font-size: 18px;
+    }
+    .mode-btn {
+        padding: 8px 20px;
+        font-size: 16px;
+    }
+    .phone-frame {
+        width: 90vw;
+        height: 80vh;
     }
 }
